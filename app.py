@@ -30,13 +30,10 @@ def show_user_profile(username):
 @app.route('/user', methods=['POST'])
 def add_user_profile():
     user = request.get_json()
-    username = user['name']
-    
-    if username in people:
-        return 'Hi %s, you are in the list! :)' % username
+    if user['name'] is not null:
+        return 'Hi %s, you are in the list! :)' % user
     else:
-        people.append(username)
-        return '%s, you were not in the list but you\'re just added' % username 
+        return '%s does not have a name parameter' % user
 
 @app.route('/user/<username>', methods=['DELETE'])
 def remove_user_profile(username):
